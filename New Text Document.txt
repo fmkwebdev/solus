@@ -1,0 +1,58 @@
+<?php
+require_once 'config/db_config.php';
+require_once 'vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+$success = "";
+$error = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? '');
+
+    $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->execute([$email]);
+    $user = $stmt->fetch();
+
+    if ($user) {
+        $token = bin2hex(random_bytes(16));
+        $stmt = $pdo->prepare("INSERT INTO password_resets (email, token) VALUES (?, ?)");
+        $stmt->execute([$email, $token]);
+
+        // Email küldés
+        $mail = new PHPMailer(true);
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'fmkwebdev@gmail.com';
+            $mail->Password = 'tzga xndw snub tupn';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            $mail->setFrom('fmkwebdev@gmail.com', 'Dog Walk App');
+            $mail->addAddress($email);
+            $mail->isHTML(true);
+            $mail->Subject = 'Jelszó visszaállítás';
+            $mail->Body = "Kattints az alábbi linkre új jelszó megadásához:<br>
+            <a href='http://localhost/dog_walk/reset_password.php?token=$token'>Jelszó visszaállítása</a>";
+            $mail->send();
+
+            $success = "Jelszó-visszaállító link elküldve. Nézd meg az emailed!";
+        } catch (Exception $e) {
+            $error = "Hiba történt az email küldés során.";
+        }
+    } else {
+        $error = "Ez az email nem szerepel az adatbázisban.";
+    }
+}
+?>
+
+<h2>Elfelejtett jelszó</h2>
+<?php if ($success): ?><p style="color:green"><?= $success ?></p><?php endif; ?>
+<?php if ($error): ?><p style="color:red"><?= $error ?></p><?php endif; ?>
+
+<form method="POST">
+    <input type="email" name="email" required placeholder="Email címed">
+    <button type="submit">Link küldése</button>
+</form>
