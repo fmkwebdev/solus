@@ -25,14 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'fmkwebdev@gmail.com'; // saját Gmail
-        $mail->Password = 'tzga xndw snub tupn';     // app-jelszó
+        $mail->Username = $_ENV['GMAIL_USER']; 
+        $mail->Password = $_ENV['GMAIL_PASS'];   
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
         $mail->setFrom('sajat.cimed@gmail.com', 'Dog Walk');
         $mail->addAddress($email);
-        $mail->Subject = 'Jelszó visszaállítás';
+        $mail->Subject = 'Jelszo visszaallitas';
         $mail->Body = "Kattints a linkre a jelszavad visszaállításához: $resetLink";
 
         if ($mail->send()) {

@@ -2,9 +2,9 @@
 
 
 $host = 'localhost';
-$db   = 'solus';
-$user = 'solus';
-$pass = 'Qffqtxe0x7XVA9B';
+$db   = 'kutyasetaltatas';
+$user = 'root';
+$pass = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

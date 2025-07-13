@@ -7,6 +7,9 @@ use PHPMailer\PHPMailer\Exception;
 // A Composer autoloader betöltése
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 class User
 {
     private PDO $pdo;
@@ -129,8 +132,8 @@ class User
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';           // pl. smtp.gmail.com
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'fmkwebdev@gmail.com';     // saját e‑mail
-            $mail->Password   = 'tzga xndw snub tupn';        // Gmail: App‑jelszó
+            $mail->Username   = $_ENV['GMAIL_USER'];     // saját e‑mail
+            $mail->Password   = $_ENV['GMAIL_PASS'];        // Gmail: App‑jelszó
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
             // =======================================================
