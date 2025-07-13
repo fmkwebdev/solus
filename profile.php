@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-<div class="container py-4">
+<div class="container py-4"><a href="dashboard.php" class="btn btn-outline-dark btn-sm fs-5 text-black">←Vissza</a>
     <h2 class="mb-4">Profilom szerkesztése</h2>
 
     <?php foreach ($errors as $e): ?>
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <hr>
-        <h5>Jelszó módosítása (opcionális)</h5>
+        <h5>Jelszó módosítása</h5>
 
         <div class="mb-3">
             <label>Jelenlegi jelszó</label>

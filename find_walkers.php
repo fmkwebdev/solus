@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-<div class="container py-4">
+<div class="container py-4"><a href="dashboard.php" class="btn btn-outline-dark btn-sm fs-5 text-black">←Vissza</a>
     <h2 class="mb-4">Sétáltatók keresése</h2>
 
     <div class="mb-4">
