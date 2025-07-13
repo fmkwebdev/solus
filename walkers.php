@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$existingRating) {
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <p class="card-text"><strong>Email:</strong> <?= htmlspecialchars($walker['email']) ?></p>
+                    <p class="card-text"><strong>Email:</strong><a href="mailto:<?= htmlspecialchars($walker['email']) ?>"> <?= htmlspecialchars($walker['email']) ?></a></p>
                     <p class="card-text"><strong>Kedvenc fajta:</strong> <?= htmlspecialchars($walker['favorite_breed']) ?></p>
                     <p class="card-text"><strong>Leírás:</strong><br><?= nl2br(htmlspecialchars($walker['description'])) ?></p>
                     <p class="card-text">

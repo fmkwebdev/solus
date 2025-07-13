@@ -130,10 +130,10 @@ class User
         try {
             // ===== SMTP beállítások – ÁLLÍTSD SAJÁT ADATAIDRA =====
             $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';           // pl. smtp.gmail.com
+            $mail->Host       = 'smtp.gmail.com';           
             $mail->SMTPAuth   = true;
-            $mail->Username   = $_ENV['GMAIL_USER'];     // saját e‑mail
-            $mail->Password   = $_ENV['GMAIL_PASS'];        // Gmail: App‑jelszó
+            $mail->Username   = $_ENV['GMAIL_USER'];     
+            $mail->Password   = $_ENV['GMAIL_PASS'];       
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
             // =======================================================
