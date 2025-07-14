@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$existingRating) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-<div class="container py-4">
+<div class="container py-4"><a href="find_walkers.php" class="btn btn-outline-dark btn-sm fs-5 text-black">←Vissza</a>
     <h2 class="mb-4"><?= htmlspecialchars($walker['username']) ?> értékelése</h2>
 
     <div class="card mb-4">
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$existingRating) {
             <button type="submit" class="btn btn-primary">Értékelés mentése</button>
         </form>
     <?php else: ?>
-        <div class="alert alert-info">Már értékelted ezt a sétáltatót <?= $existingRating ?> ⭐ értékeléssel.</div>
+        <div class="alert alert-info">Értékelted ezt a sétáltatót <?= $existingRating ?> ⭐ értékeléssel.</div>
     <?php endif; ?>
 </div>
 </body>
