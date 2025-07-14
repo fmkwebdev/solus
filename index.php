@@ -56,38 +56,51 @@ $topActive = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <div class="mb-5">
-        <h2 class="mb-3">🏅 Top 5 legjobbra értékelt sétáltató</h2>
+        <h2 class="mb-3">🏅 Top 5 legjobbra értékelt sétáltató</h2><br>
         <div class="row g-3">
-            <?php foreach ($topRated as $walker): ?>
-                <div class="col-md-6 col-lg-2">
-                    <div class="card shadow-sm">
-                        <img src="assets/img/<?= htmlspecialchars($walker['photo']) ?>" class="card-img-top" alt="Profilkép" height="250" width="200">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= htmlspecialchars($walker['username']) ?></h5>
-                            <p class="card-text small"><?= nl2br(htmlspecialchars($walker['description'])) ?></p>
-                            <p class="card-text"><strong><?= number_format($walker['avg_rating'], 2) ?> ⭐</strong> (<?= $walker['total_ratings'] ?> értékelés)</p>
-                        </div>
+           <div class="row">
+    <?php foreach ($topRated as $walker): ?>
+        <div class="col-md-4 col-lg-3 mb-4">
+            <div class="card h-100 d-flex flex-column">
+<img src="assets/img/<?= htmlspecialchars($walker['photo']) ?>" class="card-img-top" alt="Profilkép" height="225">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><?= htmlspecialchars($walker['username']) ?></h5>
+                    <p class="card-text flex-grow-1"><?= nl2br(htmlspecialchars($walker['description'])) ?></p>
+                    <div class="mt-auto">
+                        <p class="mb-1"><?= number_format($walker['avg_rating'], 2) ?> ⭐ (<?= $walker['total_ratings'] ?> értékelés)</p>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
         </div>
     </div>
 
     <div>
         <h2 class="mb-3">🔁 Top 5 legaktívabb sétáltató</h2>
         <div class="row g-3">
-            <?php foreach ($topActive as $walker): ?>
-                <div class="col-md-6 col-lg-2">
-                    <div class="card shadow-sm">
-                        <img src="assets/img/<?= htmlspecialchars($walker['photo']) ?>" class="card-img-top" alt="Profilkép" height="250" width="200">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= htmlspecialchars($walker['username']) ?></h5>
-                            <p class="card-text small"><?= nl2br(htmlspecialchars($walker['description'])) ?></p>
-                            <p class="card-text"><strong><?= number_format($walker['avg_rating'], 2) ?> ⭐</strong> (<?= $walker['total_ratings'] ?> értékelés)</p>
-                        </div>
-                    </div>
+<div class="row g-3">
+    <?php foreach ($topActive as $walker): ?>
+        <div class="col-md-6 col-lg-2 d-flex">
+            <div class="card shadow-sm w-100 h-100 d-flex flex-column">
+                <img src="assets/img/<?= htmlspecialchars($walker['photo']) ?>" class="card-img-top" alt="Profilkép" height="250" style="object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><?= htmlspecialchars($walker['username']) ?></h5>
+                    
+                    <!-- Leírás, ami kitölti a teret -->
+                    <p class="card-text small flex-grow-1"><?= nl2br(htmlspecialchars($walker['description'])) ?></p>
+                    
+                    <!-- Értékelés mindig alul -->
+                    <p class="card-text mt-auto">
+                        <strong><?= number_format($walker['avg_rating'], 2) ?> ⭐</strong>
+                        (<?= $walker['total_ratings'] ?> értékelés)
+                    </p>
                 </div>
-            <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
         </div>
     </div>
 </div>

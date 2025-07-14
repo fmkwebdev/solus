@@ -48,9 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" name="password" class="form-control" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Belépés</button>
-            <a href="forgot_password.php" class="btn btn-link">Elfelejtett jelszó</a>
-<a href="register.php" class="btn btn-link">Regisztáció</a>   
+            <button type="submit" class="btn btn-primary">Belépés</button><br><br>
+<a href="register.php" class="btn btn-success">Regisztáció</a> <br><br>
+            <a href="forgot_password.php" class="btn btn-danger">Elfelejtett jelszó</a>
+  
 
 </form>
     </div>
