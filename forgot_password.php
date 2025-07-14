@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("INSERT INTO password_resets (email, token) VALUES (?, ?)");
         $stmt->execute([$email, $token]);
 
-        $resetLink = "http://localhost/WP/reset_password.php?token=$token";
+        $resetLink = "https://solus.stud.vts.su.ac.rs/reset_password.php?token=$token";
 
         $mail = new PHPMailer(true);
         $mail->isSMTP();

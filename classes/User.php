@@ -145,7 +145,7 @@ class User
             $mail->Subject = 'Fiok megerosites';
 
             $activationLink = sprintf(
-                'http://localhost/WP/activate.php?code=%s',
+                'https://solus.stud.vts.su.ac.rs/activate.php?code=%s',
                 urlencode($code)
             );
 
