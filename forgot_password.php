@@ -1,9 +1,7 @@
 <?php
 require_once 'config/db_config.php';
 require_once 'vendor/autoload.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+require_once 'config/bootstrap.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 

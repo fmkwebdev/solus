@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
+require_once 'config/db_config.php';
+require_once 'config/bootstrap.php';
 // A Composer autoloader betöltése
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+
 
 class User
 {
@@ -40,11 +40,13 @@ class User
              VALUES (:email, :username, :password, :is_walker, :activation_code)"
         );
 
+	$isWalkerInt = $isWalker ? 1 : 0;
+
         $ok = $stmt->execute([
             ':email'           => $email,
             ':username'        => $username,
             ':password'        => $hash,
-            ':is_walker'       => $isWalker,
+            ':is_walker'       => $isWalkerInt,
             ':activation_code' => $activationCode
         ]);
 

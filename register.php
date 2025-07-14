@@ -1,6 +1,10 @@
 <?php
 require_once 'config/db_config.php';
 require_once 'classes/User.php';
+require_once 'config/bootstrap.php';
+
+
+use PHPMailer\PHPMailer\PHPMailer;
 
 $user = new User($pdo);
 $success = "";
